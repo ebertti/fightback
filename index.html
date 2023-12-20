@@ -22,7 +22,7 @@
     }
 
   if (urlParsed.searchParams.get('m')) {
-    manifestUri = ''.replace('https://', 'https://cnd.amazingworks.com.br/')
+    manifestUri = urlParsed.searchParams.get('m').replace('https://', 'https://cnd.amazingworks.com.br/')
   }
 
   if (!manifestUri) {
