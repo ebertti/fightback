@@ -12,13 +12,23 @@
 
   jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo'
 
-  var channel = new URL(document.location).searchParams.get('c') || 'gh1'
+  var urlParsed = new URL(document.location)
+  var manifestUri = ""
 
   var manifest = {
-    'gh1': 'https://cnd.amazingworks.com.br/dtvott-akaws.akamaized.net/live_1282/DASH/manifest.mpd',
-    'hbo': 'https://cnd.amazingworks.com.br/dtvott-jbc.akamaized.net/dash_live_0078/manifest.mpd'
+      'gh1': 'https://cnd.amazingworks.com.br/dtvott-akaws.akamaized.net/live_1282/DASH/manifest.mpd',
+      'hbo': 'https://cnd.amazingworks.com.br/dtvott-jbc.akamaized.net/dash_live_0078/manifest.mpd',
+      'cnn': 'https://cnd.amazingworks.com.br/dtvott-jbc.akamaized.net/dash_live_0024/manifest.mpd'
+    }
+
+  if (urlParsed.searchParams.get('m')) {
+    manifestUri = ''.replace('https://', 'https://cnd.amazingworks.com.br/')
   }
 
+  if (!manifestUri) {
+    var channel = new URL(document.location).searchParams.get('c') || 'gh1'
+    manifestUri = manifest[channel]
+  }
 
   var drm = {
     clearkey: {
@@ -33,7 +43,7 @@
     'autostart': true,
     'muted': false,
     'type': "dash",
-    'file': manifest[channel],
+    'file': manifestUri,
     'preload': false,
     'cast': {}
   })
