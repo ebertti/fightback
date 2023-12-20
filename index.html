@@ -12,7 +12,7 @@
 
   jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo'
 
-  var channel = new URL(document.location).searchParams.c || 'gh1'
+  var channel = new URL(document.location).searchParams.get('c') || 'gh1'
 
   var manifest = {
     'gh1': 'https://cnd.amazingworks.com.br/dtvott-akaws.akamaized.net/live_1282/DASH/manifest.mpd',
