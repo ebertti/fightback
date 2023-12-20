@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Shaka Player compiled library: -->
+  <script src="https://ssl.p.jwpcdn.com/player/v/8.26.9/jwplayer.js"></script>
+  <!-- Your application source: -->
+</head>
+<body>
+<video id="player" width="640" controls autoplay></video>
+</body>
+<script>
+
+  jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo'
+  
+  var manifestUri = "https://cnd.amazingworks.com.br/live_1282/DASH/manifest.mpd"
+  var drm = {
+    clearkey: {
+      key: "c1696c67cf7a678932d33340135ea82b",
+      keyId: "de7d7ded48b437d691966acdc8a97262"
+    }
+  }
+
+  let player = jwplayer("player")
+  player.setup({
+    'drm': drm,
+    'autostart': true,
+    'muted': false,
+    'type': "dash",
+    'file': manifestUri,
+    'preload': false,
+    'cast': {}
+  })
+
+</script>
+</html>
